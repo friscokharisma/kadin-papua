@@ -32,3 +32,23 @@
 <script src="{{asset('template/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('template/dist/js/pages/dashboard.js')}}"></script>
+<!-- SweetAlert2 -->
+<script src="{{ asset('template/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+
+<script>
+    $(function() {
+        var Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+
+        $('.swalDefaultSuccess').click(function() {
+            Toast.fire({
+                icon: 'success',
+                title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+            })
+        });
+    });
+</script>

@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\COntrollers\PagesController;
 use App\Http\COntrollers\PostsController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +22,27 @@ use App\Http\COntrollers\PostsController;
 
 Route::get('/', [PagesController::class, 'index']);
 
-Route::resource('/article', PostsController::class);
-Route::get('/dashboard', [PostsController::class, 'dashboardindex']);
+Route::prefix('d')->group(function () {
+    Auth::routes();
 
+    Route::middleware(['auth'])->group(function () {
+        Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
+
+        Route::get('', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('articles', ArticleController::class);
+    });
+});
+
+
+
+
+// Route::get('/', [PostsController::class, 'dashboardindex']);
+// Route::resource('/article', PostsController::class);
+// Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
 // Route::resource('/dashboard', PostsController::class);
 // Route::get('/article', [PostsController::class, 'articleindex']);
 
-Auth::routes();
-
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes();
 
 // Route::get('/dashboard', function() {
 //     return view ('dashboard.index');

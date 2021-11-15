@@ -18,3 +18,5 @@
 <link rel="stylesheet" href="{{asset('template/plugins/daterangepicker/daterangepicker.css')}}">
 <!-- summernote -->
 <link rel="stylesheet" href="{{asset('template/plugins/summernote/summernote-bs4.min.css')}}">
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="{{ asset('template/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Posts extends Migration
+class CreatePostUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class Posts extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('post_user', function (Blueprint $table) {
             $table->id();
-            $table->string('slug')->nullable();
-            $table->string('title');
-            $table->longText('description')->nullable();
-            $table->string('image_path')->nullable(); // It should be change to db path
-            $table->timestamps();
+            $table->bigInteger('user_id');
+            $table->bigInteger('post_id');
         });
     }
 
@@ -30,6 +27,6 @@ class Posts extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('post_user');
     }
 }

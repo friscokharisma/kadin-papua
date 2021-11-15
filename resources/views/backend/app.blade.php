@@ -6,7 +6,7 @@
   <title>@yield('title')</title>
 
     @include('backend.stylesheet')
-  
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -20,8 +20,6 @@
 
   @yield('sidebar')
 
-  {{-- @include('backend.sidebar') --}}
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -33,7 +31,9 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+                @if (request()->url() != route('articles.index') && request()->url() != route('dashboard'))
+                <li class="breadcrumb-item"><a href="{{ route('articles.index') }}">Articles</a></li>
+                @endif
               <li class="breadcrumb-item active">@yield('title')</li>
             </ol>
           </div><!-- /.col -->
@@ -43,7 +43,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    
+
     @yield('content')
 
     <!-- /.content -->

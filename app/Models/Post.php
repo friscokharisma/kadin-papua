@@ -13,9 +13,9 @@ class Post extends Model
 
     protected $fillable = ['title', 'slug', 'description', 'image_path', 'user_id'];
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class, 'post_user', 'post_id', 'user_id');
     }
 
     public function sluggable(): array

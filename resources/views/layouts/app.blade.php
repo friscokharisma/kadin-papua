@@ -11,12 +11,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    
+
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     {{-- Carousel --}}
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet"> 
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
 
 		<style>
 			.carousel-open:checked + .carousel-item {
@@ -62,8 +62,8 @@
                 </div>
                 <nav class="space-x-4 text-gray-800 text-sm sm:text-base">
                     {{-- added --}}
-                    <a class="no-underline hover:underline" href="/">Home</a> 
-                    <a class="no-underline hover:underline" href="/article">Berita</a> 
+                    <a class="no-underline hover:underline" href="/">Home</a>
+                    <a class="no-underline hover:underline" href="/article">Berita</a>
                     @guest
                         <a class="no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
                         {{-- @if (Route::has('register'))
