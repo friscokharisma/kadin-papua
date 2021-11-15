@@ -9,7 +9,7 @@
 
         <!-- Sidebar -->
         <div class="sidebar" data-widget="treeview" data-accordion="false">
-            <!-- Sidebar user panel (optional) -->
+            <!-- sidebar user panel (optional) -->
             <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
                 <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                 <li class="nav-item user-panel mt-3 pb-3 mb-3">
