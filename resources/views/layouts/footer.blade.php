@@ -1,6 +1,6 @@
 <footer class="bg-yellow-400 py-10 mt-10">
-    <div class="sm:grid grid-cols-3 w-8/12 pb-10 m-auto border-b-2 border-gray-700">
-        <div>
+    <div class="sm:grid grid-cols-3 w-10/12 pb-10 m-auto border-b-2 border-gray-700">
+        <div class="mx-auto">
             <h3 class="text-l sm:font-bold text-gray-800">
                 Pages
             </h3>
@@ -29,7 +29,7 @@
             </ul>
         </div>
 
-        <div>
+        <div class="mx-auto">
             <h3 class="text-l sm:font-bold text-gray-800">
                 About Us
             </h3>
@@ -58,7 +58,7 @@
             </ul>
         </div>
 
-        <div>
+        <div class="mx-auto">
             <h3 class="text-l sm:font-bold text-gray-800">
                 Follow us
             </h3>
@@ -87,7 +87,7 @@
             </ul>
         </div>
     </div>
-    <p class="w-25 w-8/12 pb-3 m-auto text-xs text-gray-800 pt-6">
+    <p class="w-25 w-10/12 pb-3 m-auto text-xs text-gray-800 pt-6">
         Copyright © 2021 Kadin Papua. All Rights Reserved
     </p>
 </footer>

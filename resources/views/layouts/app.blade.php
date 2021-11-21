@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ __('KADIN Papua') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -54,10 +54,10 @@
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
     <div id="app">
         <header class="bg-yellow-300 py-4">
-            <div class="container mx-auto flex justify-between items-center px-6 sm:w-8/12">
+            <div class="container mx-auto flex justify-between items-center px-6 sm:w-10/12">
                 <div>
                     <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-900 no-underline">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ __('KADIN Papua') }}
                     </a>
                 </div>
                 <nav class="space-x-4 text-gray-800 text-sm sm:text-base">
@@ -89,7 +89,7 @@
         </header>
 
         @if ($errors->any())
-        <div class="w-8/12 m-auto">
+        <div class="w-10/12 m-auto">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li class="w-2/5 mb-4 text-gray-50 bg-red-700 rounded-2xl py-4 mx-auto">

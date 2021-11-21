@@ -12,7 +12,7 @@ class PostsController extends Controller
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +21,7 @@ class PostsController extends Controller
     public function index()
     {
         return view('article.index')
-        // return view('dashboard.index')
+            // return view('dashboard.index')
             ->with('posts', Post::orderBy('updated_at', 'DESC')->get());
 
         // $post = Post::all()->limit(5);
@@ -30,18 +30,20 @@ class PostsController extends Controller
         // return view('index')
         //     ->with('posts', Post::orderBy('updated_at', 'DESC')->get());
     }
-    
+
     // /**
     //  * Display a listing of the resource.
     //  *
     //  * @return \Illuminate\Http\Response
     //  */
-    // public function articleindex()
-    // {
-    //     return view('article.index')
-    //         ->with('posts', Post::orderBy('updated_at', 'DESC')->get());
-    // }
-    
+    public function articleindex()
+    {
+        $posts = Post::orderBy('updated_at', 'DESC')->paginate(3);
+        $latest_post = Post::orderBy('id', 'DESC')->first();
+
+        return view('article.index', compact('posts', 'latest_post'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -85,12 +87,12 @@ class PostsController extends Controller
             'image' => 'required|mimes:jpg,png,jpeg|max:5048',
         ]);
 
-        $newImageName = uniqid(). '-' . $request->title . '.' . $request->image->extension();
+        $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
 
         $request->image->move(public_path('images'), $newImageName); //Image path save
-        
+
         // $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
-        
+
         Post::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
@@ -101,7 +103,7 @@ class PostsController extends Controller
 
         return redirect('/dashboard')
             ->with('message', 'Berhasil menambahkan artikel!');
-        
+
         // return redirect('/article')
         //     ->with('message', 'Berhasil menambahkan artikel!');
 
@@ -114,10 +116,11 @@ class PostsController extends Controller
      * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        return view('article.show')
-            ->with('post', Post::where('slug', $slug)->first());
+        $post = Post::findOrFail('id');
+
+        return view('article.show', compact('post'));
     }
 
     /**
@@ -148,7 +151,7 @@ class PostsController extends Controller
             'description' => 'required',
             // 'image' => 'required|mimes:jpg,png,jpeg|max:5048',
         ]);
-        
+
         Post::where('slug', $slug)
             ->update([
                 'title' => $request->input('title'),
@@ -158,7 +161,7 @@ class PostsController extends Controller
                 'user_id' => auth()->user()->id
             ]);
 
-            return redirect('/dashboard')
+        return redirect('/dashboard')
             ->with('message', 'Berhasil mengubah artikel!');
     }
 

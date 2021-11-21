@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [PagesController::class, 'index']);
+Route::get('/article', [PostsController::class, 'articleindex'])->name('main-article');
+Route::get('/article/{id}', [PostsController::class, 'show'])->name('article.show');
 
 Route::prefix('d')->group(function () {
     Auth::routes();
@@ -40,7 +42,6 @@ Route::prefix('d')->group(function () {
 // Route::resource('/article', PostsController::class);
 // Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
 // Route::resource('/dashboard', PostsController::class);
-// Route::get('/article', [PostsController::class, 'articleindex']);
 
 // Auth::routes();
 
